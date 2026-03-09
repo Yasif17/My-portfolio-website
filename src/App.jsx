@@ -208,7 +208,7 @@ export default function App() {
  "url": "https://yourdomain.com",
  "jobTitle": "Backend Engineer",
  "sameAs": [
-   "https://github.com/Ashh26",
+   "https://github.com/Yasif17",
    "https://linkedin.com",
    "https://medium.com/@yasiffkhan"
  ],
@@ -420,7 +420,7 @@ export default function App() {
               alignItems: "center",
               justifyContent: "center",
               color: "white",
-              paddingTop: isMobile ? "120px" : "140px",
+              paddingTop: isMobile ? "100px" : "100px",
               opacity: introDone ? 1 : 0,
               transition: "opacity 1s ease",
               position: "relative",
@@ -462,11 +462,11 @@ export default function App() {
                     ...heroTitle(isMobile),
                     maxWidth: isMobile ? "100%" : "760px",
                     borderBottom: "1px solid rgba(255,255,255,0.08)",
-                    paddingBottom: "2rem",
+                    paddingBottom: "1rem",
                     whiteSpace: "collapse",
                   }}
                 >
-                  Hi, <AnimatedName />— A Software Engineer(Java & Spring Boot)
+                  I'm, <AnimatedName />— A Software Engineer(Java & Spring Boot)
                 </h1>
                 <p>Architecting Secure & Scalable Backend Systems Specialist</p>
               </Reveal>
@@ -793,7 +793,7 @@ export default function App() {
                       <Button1
                         onClick={() =>
                           window.open(
-                            "https://github.com/Ashh26/Cab-Booking-Sytem.git",
+                            "https://github.com/Yasif17/Cab-Booking-Sytem.git",
                             "_blank",
                           )
                         }
@@ -845,7 +845,7 @@ export default function App() {
                       <Button1
                         onClick={() =>
                           window.open(
-                            "https://github.com/Ashh26/JobSeekers-job-networking-springBoot-backend-application-.git",
+                            "https://github.com/Yasif17/JobSeekers-job-networking-springBoot-backend-application-.git",
                             "_blank",
                           )
                         }
@@ -873,7 +873,14 @@ export default function App() {
                       <span>Performance</span>
                     </div>
                     <div className="project-buttons">
-                      <Button1 />
+                      <Button1 onClick={() =>
+                          window.open(
+                            "https://github.com/Yasif17/My-portfolio-website.git",
+                            "_blank",
+                          )
+                        }>
+                        GitHub
+                      </Button1>
                     </div>
                   </div>
                 </div>
@@ -1209,7 +1216,7 @@ export default function App() {
                     {
                       label: "GitHub",
                       icon: "https://cdn.simpleicons.org/github/ffffff",
-                      link: "https://github.com/Ashh26",
+                      link: "https://github.com/Yasif17",
                       color: "#ffffff",
                     },
                     {
@@ -1355,7 +1362,7 @@ export default function App() {
                   <Button3
                     variant="transparent"
                     onClick={() =>
-                      window.open("https://github.com/Ashh26", "_blank")
+                      window.open("https://github.com/Yasif17", "_blank")
                     }
                   >
                     GitHub

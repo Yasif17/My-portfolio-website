@@ -1,7 +1,7 @@
 // src/ui/AnimatedName.jsx
 import { useEffect, useMemo, useState } from "react";
 
-export default function AnimatedName({ name = " Yasif Khan " }) {
+export default function AnimatedName({ name = "Yasif Khan " }) {
   const [i, setI] = useState(0);
 
   useEffect(() => {
