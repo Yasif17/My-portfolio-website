@@ -153,9 +153,6 @@ export default function App() {
   const cursorDotRef = useRef();
 
   useEffect(() => {
-    // ✅ stop cursor on touch devices
-    if (isMobile) return;
-
     let mouseX = 0;
     let mouseY = 0;
     let posX = 0;
@@ -169,7 +166,6 @@ export default function App() {
     window.addEventListener("mousemove", move);
 
     let frame;
-
     const animate = () => {
       posX += (mouseX - posX) * 0.15;
       posY += (mouseY - posY) * 0.15;
@@ -187,10 +183,7 @@ export default function App() {
 
     animate();
 
-    return () => {
-      window.removeEventListener("mousemove", move);
-      cancelAnimationFrame(frame);
-    };
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   useEffect(() => {
@@ -297,24 +290,21 @@ export default function App() {
           }}
         />
 
-        {!isMobile && (
-          <div
-            ref={cursorDotRef}
-            style={{
-              position: "fixed",
-              top: 0,
-              left: 0,
-              width: "6px",
-              height: "6px",
-              background: "#22c55e",
-              borderRadius: "50%",
-              pointerEvents: "none",
-              transform: "translate(-50%, -50%)",
-              zIndex: 5001,
-              boxShadow: "0 0 8px #22c55e",
-            }}
-          />
-        )}
+        <div
+          ref={cursorDotRef}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "6px",
+            height: "6px",
+            background: "#22c55e",
+            borderRadius: "50%",
+            pointerEvents: "none",
+            transform: "translate(-50%, -50%)",
+            zIndex: 5001,
+          }}
+        />
 
         {/* ✅ Canvas ABOVE gradient */}
         <Suspense fallback={null}>
@@ -481,8 +471,7 @@ export default function App() {
                     whiteSpace: "collapse",
                   }}
                 >
-                  Hi, I'm <AnimatedName />— A Software Engineer(Java & Spring
-                  Boot)
+                Hi, I'm <AnimatedName />— A Software Engineer(Java & Spring Boot)
                 </h1>
                 <p>Architecting Secure & Scalable Backend Systems Specialist</p>
               </Reveal>
