@@ -275,11 +275,7 @@ export default function App() {
             height: "100%",
             pointerEvents: "none",
             background: `
-          radial-gradient(
-            circle at 75% 50%,
-            rgba(37,99,235,0.15),
-            rgba(2,6,23,0.9) 45%
-          )
+          rgba(37,99,235,0.10)
         `,
             zIndex: 0,
           }}
@@ -873,12 +869,14 @@ export default function App() {
                       <span>Performance</span>
                     </div>
                     <div className="project-buttons">
-                      <Button1 onClick={() =>
+                      <Button1
+                        onClick={() =>
                           window.open(
                             "https://github.com/Yasif17/My-portfolio-website.git",
                             "_blank",
                           )
-                        }>
+                        }
+                      >
                         GitHub
                       </Button1>
                     </div>
