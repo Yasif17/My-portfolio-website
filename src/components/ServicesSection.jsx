@@ -95,7 +95,13 @@ const ServicesSection = memo(function ServicesSection({
           </Reveal>
 
           <Reveal delay={120}>
-            <p style={{ ...paragraphStyle, maxWidth: "680px" }}>
+            <p
+              style={{
+                ...paragraphStyle,
+                maxWidth: "680px",
+                color: "rgba(255,255,255,0.85)",
+              }}
+            >
               I build high-impact backend systems and premium 3D portfolio like
               this one and any kind of websites you want. If you want a modern,
               conversion-focused presence with a high-performance delivery, I
@@ -120,7 +126,7 @@ const ServicesSection = memo(function ServicesSection({
                   style={{
                     margin: 0,
                     lineHeight: 1.6,
-                    color: "rgba(255,255,255,0.65)"
+                    color: "rgba(255,255,255,0.65)",
                   }}
                 >
                   {s.desc}
@@ -140,7 +146,15 @@ const ServicesSection = memo(function ServicesSection({
                 Engagement Model
               </h3>
 
-              <div style={{ display: "grid", gap: "0.9rem" }}>
+              <div
+                style={{
+                  display: "grid",
+                  gap: "0.9rem",
+                  color: "#22c55e",
+                  textShadow:
+                    "0 0 8px rgba(34,197,94,0.7), 0 0 16px rgba(34,197,94,0.5)",
+                }}
+              >
                 {[
                   "Discovery: requirements + references",
                   "Design: UI layout + section flow",
@@ -174,7 +188,7 @@ const ServicesSection = memo(function ServicesSection({
                 </Button3>
               </div>
 
-              <p style={{ marginTop: "1.4rem", opacity: 0.6, lineHeight: 1.6 }}>
+              <p style={{ marginTop: "1.4rem", opacity: 0.9, lineHeight: 1.6 }}>
                 For best outcomes, share your reference site + target sections +
                 hosting preference.
               </p>
