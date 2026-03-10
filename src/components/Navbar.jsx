@@ -249,6 +249,9 @@ export default function Navbar({ active, scrollToPage, isMobile }) {
               gap: "1.2rem",
               overflowY: "auto",
               WebkitOverflowScrolling: "touch",
+              color: "#22c55e",
+              textShadow:
+                "0 0 8px rgba(34,197,94,0.7), 0 0 16px rgba(34,197,94,0.5)",
             }}
           >
             {/* CLOSE BUTTON */}

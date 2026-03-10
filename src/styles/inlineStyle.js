@@ -64,6 +64,7 @@ export const paragraphStyle = {
   fontSize: "1.2rem",
   lineHeight: 1.6,
   opacity: 0.85,
+  
 };
 
 export const primaryBtn = {

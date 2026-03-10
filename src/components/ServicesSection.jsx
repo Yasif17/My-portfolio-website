@@ -142,7 +142,7 @@ const ServicesSection = memo(function ServicesSection({
             <div className="svc-cta">
               <div className="svc-cta__glow" />
 
-              <h3 style={{ marginTop: 0, marginBottom: "1rem" }}>
+              <h3 style={{ marginTop: 0, marginBottom: "1rem", color: "rgba(255,255,255,0.85)" }}>
                 Engagement Model
               </h3>
 
