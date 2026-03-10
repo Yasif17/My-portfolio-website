@@ -688,15 +688,8 @@ canvas {
 
 
 @media (max-width: 768px) {
-
-  .svc-card,
-  .svc-cta,
-  .project-card-optimized,
-  .engineering-card,
-  .eng-card,
-  .dock-container {
+  * {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
-
 }
