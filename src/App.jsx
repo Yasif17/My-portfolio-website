@@ -104,16 +104,17 @@ export default function App() {
   }, []);
 
   const [isMobile, setIsMobile] = useState(
-    typeof window !== "undefined" ? window.innerWidth < 900 : false,
+    window.matchMedia("(max-width: 768px)").matches,
   );
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 900);
-    };
+    const media = window.matchMedia("(max-width: 768px)");
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    const listener = () => setIsMobile(media.matches);
+
+    media.addEventListener("change", listener);
+
+    return () => media.removeEventListener("change", listener);
   }, []);
 
   const [showCert, setShowCert] = useState(false);
@@ -873,12 +874,14 @@ export default function App() {
                       <span>Performance</span>
                     </div>
                     <div className="project-buttons">
-                      <Button1 onClick={() =>
+                      <Button1
+                        onClick={() =>
                           window.open(
                             "https://github.com/Yasif17/My-portfolio-website.git",
                             "_blank",
                           )
-                        }>
+                        }
+                      >
                         GitHub
                       </Button1>
                     </div>
