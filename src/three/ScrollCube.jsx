@@ -3,7 +3,12 @@ import { useFrame } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
 
-export default function ScrollCube({ isMobile, introDone, sectionId, mouseRef }) {
+export default function ScrollCube({
+  isMobile,
+  introDone,
+  sectionId,
+  mouseRef,
+}) {
   const meshRef = useRef();
 
   const materialRef = useRef();
@@ -117,16 +122,16 @@ export default function ScrollCube({ isMobile, introDone, sectionId, mouseRef })
     state.camera.lookAt(0, 0, 0);
 
     // emissive pulse
-    const baseIntensity = 0.25;
+    const baseIntensity = isMobile ? 0.18 : 0.25;
+
     const pulse =
-      baseIntensity + Math.sin(state.clock.elapsedTime * 1.5) * 0.08;
-    if (materialRef.current) materialRef.current.emissiveIntensity = pulse;
+      baseIntensity + Math.sin(state.clock.elapsedTime * 0.9) * 0.03;
 
     // color per section
     const targetColor = colors[sectionId] || colors[0];
 
     meshRef.current.material.color.lerp(targetColor, 0.05);
-    meshRef.current.material.emissive.lerp(targetColor, 0.05);
+    // meshRef.current.material.emissive.lerp(targetColor, 0.05);
   });
 
   const colors = useMemo(
