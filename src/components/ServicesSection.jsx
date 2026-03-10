@@ -120,6 +120,7 @@ const ServicesSection = memo(function ServicesSection({
                   style={{
                     margin: 0,
                     lineHeight: 1.6,
+                    color: "rgba(255,255,255,0.65)"
                   }}
                 >
                   {s.desc}
