@@ -3,7 +3,12 @@ import { useFrame } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
 
-export default function ScrollCube({ isMobile, introDone, sectionId, mouseRef }) {
+export default function ScrollCube({
+  isMobile,
+  introDone,
+  sectionId,
+  mouseRef,
+}) {
   const meshRef = useRef();
 
   const materialRef = useRef();
@@ -20,16 +25,16 @@ export default function ScrollCube({ isMobile, introDone, sectionId, mouseRef })
     meshRef.current.rotation.x += Math.sin(t * 0.6) * 0.0008;
 
     const rawProgress =
-  window.scrollY / (document.body.scrollHeight - window.innerHeight);
+      window.scrollY / (document.body.scrollHeight - window.innerHeight);
 
-// smooth mobile scroll momentum
-smoothScroll.current = THREE.MathUtils.lerp(
-  smoothScroll.current,
-  rawProgress,
-  0.08
-);
+    // smooth mobile scroll momentum
+    smoothScroll.current = THREE.MathUtils.lerp(
+      smoothScroll.current,
+      rawProgress,
+      0.08,
+    );
 
-const progress = smoothScroll.current;
+    const progress = smoothScroll.current;
 
     // 3D mouse tilt effect
     const mouseTiltX = state.mouse.y * 0.6;
@@ -62,7 +67,8 @@ const progress = smoothScroll.current;
     );
 
     meshRef.current.rotation.z = state.clock.elapsedTime * 0.08;
-   meshRef.current.position.y += Math.sin(state.clock.elapsedTime * 0.5) * 0.07;
+    meshRef.current.position.y +=
+      Math.sin(state.clock.elapsedTime * 0.5) * 0.07;
 
     // ✅ smooth scale across sections (no double writes)
     const base = isMobile ? 0.62 : 0.92;
@@ -127,10 +133,14 @@ const progress = smoothScroll.current;
     state.camera.lookAt(0, 0, 0);
 
     // emissive pulse
-    const baseIntensity = 0.25;
+    // premium smooth emissive glow
+    const baseIntensity = isMobile ? 0.38 : 0.32;
     const pulse =
-      baseIntensity + Math.sin(state.clock.elapsedTime * 1.5) * 0.08;
-    if (materialRef.current) materialRef.current.emissiveIntensity = pulse;
+      baseIntensity + Math.sin(state.clock.elapsedTime * 0.8) * 0.02;
+
+    if (materialRef.current) {
+      materialRef.current.emissiveIntensity = pulse;
+    }
 
     // color per section
     const targetColor = colors[sectionId] || colors[0];
