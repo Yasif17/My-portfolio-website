@@ -1,7 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import StarsParallax from "../three/StarsParallax";
-import ScrollCube from "../three/ScrollCube";
+// import ScrollCube from "../three/ScrollCube";
 
 export default function CanvasScene({ isMobile, introDone, mouseRef, sectionId }) {
   return (
@@ -58,12 +58,12 @@ export default function CanvasScene({ isMobile, introDone, mouseRef, sectionId }
 
         <StarsParallax introDone={introDone} isMobile={isMobile} />
 
-        <ScrollCube
+        {/* <ScrollCube
           isMobile={isMobile}
           introDone={introDone}
           sectionId={sectionId}
           mouseRef={mouseRef}
-        />
+        /> */}
       </Canvas>
     </>
   );
