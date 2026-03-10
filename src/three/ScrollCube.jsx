@@ -3,17 +3,11 @@ import { useFrame } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
 
-export default function ScrollCube({
-  isMobile,
-  introDone,
-  sectionId,
-  mouseRef,
-}) {
+export default function ScrollCube({ isMobile, introDone, sectionId, mouseRef }) {
   const meshRef = useRef();
 
   const materialRef = useRef();
   const scaleRef = useRef(0.6);
-  const smoothScroll = useRef(0);
 
   useFrame((state) => {
     if (!meshRef.current) return;
@@ -24,25 +18,8 @@ export default function ScrollCube({
     meshRef.current.rotation.y += 0.003;
     meshRef.current.rotation.x += Math.sin(t * 0.6) * 0.0008;
 
-    const maxScroll = document.body.scrollHeight - window.innerHeight;
-
-    let rawProgress = window.scrollY / maxScroll;
-
-    // clamp scroll progress so mobile momentum cannot overshoot
-    rawProgress = THREE.MathUtils.clamp(rawProgress, 0, 1);
-
-    // smooth mobile scroll momentum
-    // smoothScroll.current = THREE.MathUtils.lerp(
-    //   smoothScroll.current,
-    //   rawProgress,
-    //   0.08,
-    // );
-
-    const smoothFactor = isMobile ? 0.04 : 0.08;
-
-    smoothScroll.current += (rawProgress - smoothScroll.current) * smoothFactor;
-
-    const progress = smoothScroll.current;
+    const progress =
+      window.scrollY / (document.body.scrollHeight - window.innerHeight);
 
     // 3D mouse tilt effect
     const mouseTiltX = state.mouse.y * 0.6;
@@ -52,21 +29,11 @@ export default function ScrollCube({
     meshRef.current.rotation.y += mouseTiltY * 0.02;
 
     meshRef.current.position.x = isMobile ? 0 : 3.2;
-    // meshRef.current.position.y = isMobile ? -1.8 : meshRef.current.position.y;
-
-    // const targetRotationY = progress * Math.PI;
-    // const targetRotationX = progress * Math.PI;
-    // const targetY = progress * 1.5 - 1;
+    meshRef.current.position.y = isMobile ? -1.8 : meshRef.current.position.y;
 
     const targetRotationY = progress * Math.PI;
     const targetRotationX = progress * Math.PI;
-
-    const baseY = isMobile ? -1.8 : -1;
-    const scrollRange = isMobile ? 1.2 : 1.5;
-    const floatOffset =
-      Math.sin(state.clock.elapsedTime * 0.5) * (isMobile ? 0.01 : 0.02);
-
-    const targetY = baseY + progress * scrollRange + floatOffset;
+    const targetY = progress * 1.5 - 1;
 
     meshRef.current.rotation.y = THREE.MathUtils.lerp(
       meshRef.current.rotation.y,
@@ -81,11 +48,11 @@ export default function ScrollCube({
     meshRef.current.position.y = THREE.MathUtils.lerp(
       meshRef.current.position.y,
       targetY,
-      isMobile ? 0.05 : 0.08,
+      0.08,
     );
 
     meshRef.current.rotation.z = state.clock.elapsedTime * 0.08;
-    //  meshRef.current.position.y += Math.sin(state.clock.elapsedTime * 0.5) * 0.02;
+    meshRef.current.position.y += Math.sin(state.clock.elapsedTime) * 0.05;
 
     // ✅ smooth scale across sections (no double writes)
     const base = isMobile ? 0.62 : 0.92;
@@ -113,8 +80,8 @@ export default function ScrollCube({
 
     // camera micro-parallax
     // Smooth cinematic camera parallax
-    const mx = isMobile ? 0 : mouseRef.current.x;
-    const my = isMobile ? 0 : mouseRef.current.y;
+    const mx = mouseRef.current.x;
+    const my = mouseRef.current.y;
 
     // ring tilt
     meshRef.current.rotation.x += my * 0.02;
@@ -180,12 +147,12 @@ export default function ScrollCube({
   return (
     <mesh ref={meshRef}>
       <torusGeometry
-        args={isMobile ? [1.8, 0.35, 12, 30] : [1.8, 0.35, 18, 50]}
+        args={isMobile ? [1.8, 0.35, 12, 30] : [1.8, 0.35, 16, 50]}
       />
       <meshPhysicalMaterial
         ref={materialRef}
         color="#22c55e"
-        metalness={1.2}
+        metalness={0.9}
         roughness={0.2}
         clearcoat={1}
         clearcoatRoughness={0.08}
