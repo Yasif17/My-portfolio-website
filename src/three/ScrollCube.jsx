@@ -8,6 +8,7 @@ export default function ScrollCube({ isMobile, introDone, sectionId, mouseRef })
 
   const materialRef = useRef();
   const scaleRef = useRef(0.6);
+  const smoothScroll = useRef(0);
 
   useFrame((state) => {
     if (!meshRef.current) return;
@@ -18,8 +19,17 @@ export default function ScrollCube({ isMobile, introDone, sectionId, mouseRef })
     meshRef.current.rotation.y += 0.003;
     meshRef.current.rotation.x += Math.sin(t * 0.6) * 0.0008;
 
-    const progress =
-      window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    const rawProgress =
+  window.scrollY / (document.body.scrollHeight - window.innerHeight);
+
+// smooth mobile scroll momentum
+smoothScroll.current = THREE.MathUtils.lerp(
+  smoothScroll.current,
+  rawProgress,
+  0.08
+);
+
+const progress = smoothScroll.current;
 
     // 3D mouse tilt effect
     const mouseTiltX = state.mouse.y * 0.6;
@@ -52,7 +62,7 @@ export default function ScrollCube({ isMobile, introDone, sectionId, mouseRef })
     );
 
     meshRef.current.rotation.z = state.clock.elapsedTime * 0.08;
-    meshRef.current.position.y += Math.sin(state.clock.elapsedTime) * 0.05;
+   meshRef.current.position.y += Math.sin(state.clock.elapsedTime * 0.5) * 0.02;
 
     // ✅ smooth scale across sections (no double writes)
     const base = isMobile ? 0.62 : 0.92;

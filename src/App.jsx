@@ -1391,6 +1391,7 @@ export default function App() {
               color: "rgba(255,255,255,0.5)",
               fontSize: "0.9rem",
               position: "relative",
+              marginBottom: "2rem",
             }}
           >
             <div>
