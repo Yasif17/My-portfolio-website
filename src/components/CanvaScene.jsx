@@ -3,7 +3,12 @@ import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import StarsParallax from "../three/StarsParallax";
 import ScrollCube from "../three/ScrollCube";
 
-export default function CanvasScene({ isMobile, introDone, mouseRef, sectionId }) {
+export default function CanvasScene({
+  isMobile,
+  introDone,
+  mouseRef,
+  sectionId,
+}) {
   return (
     <>
       <div
@@ -20,12 +25,13 @@ export default function CanvasScene({ isMobile, introDone, mouseRef, sectionId }
       <Canvas
         style={{
           position: "fixed",
-          top: 0,
-          left: 0,
-          zIndex: 0,
+          inset: 0,
           width: "100%",
           height: "100%",
+          zIndex: 0,
+          pointerEvents: "none",
         }}
+        resize={{ scroll: false }}
         frameloop="always"
         shadows={false}
         dpr={isMobile ? 1 : [1, 1.2]}
@@ -34,10 +40,13 @@ export default function CanvasScene({ isMobile, introDone, mouseRef, sectionId }
           powerPreference: "high-performance",
           alpha: false,
         }}
-        camera={{ position: [0, 0, 6], fov: 50 }}
+        camera={{
+          position: [0, 0, 6],
+          fov: isMobile ? 60 : 50,
+        }}
         performance={{ min: 0.7 }}
       >
-        <color attach="background" args={["#000000"]} />
+        <color attach="background" args={["#020617"]} />
         <fog attach="fog" args={["#000000", 10, 20]} />
 
         <ambientLight intensity={0.25} />
@@ -57,13 +66,13 @@ export default function CanvasScene({ isMobile, introDone, mouseRef, sectionId }
         )}
 
         <StarsParallax introDone={introDone} isMobile={isMobile} />
-
-        <ScrollCube
-          isMobile={isMobile}
-          introDone={introDone}
-          sectionId={sectionId}
-          mouseRef={mouseRef}
-        />
+        {!isMobile && (
+          <ScrollCube
+            introDone={introDone}
+            sectionId={sectionId}
+            mouseRef={mouseRef}
+          />
+        )}
       </Canvas>
     </>
   );

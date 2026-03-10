@@ -255,7 +255,7 @@ export default function App() {
           minHeight: "100vh",
           overflowX: "hidden",
           position: "relative",
-          background: "#020617",
+          // background: "#020617",
         }}
       >
         <ScrollProgress />
@@ -269,9 +269,13 @@ export default function App() {
         <div
           style={{
             position: "absolute",
-            inset: 0,
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
             pointerEvents: "none",
-            background: "transparent",
+            background:
+              "radial-gradient(circle at 75% 20%, rgba(37,99,235,0.08), transparent 35%)",
             zIndex: 0,
           }}
         />
