@@ -59,7 +59,7 @@ export default function Navbar({ active, scrollToPage, isMobile }) {
             visible ? "translateY(0)" : "translateY(-120%)"
           }`,
           transition: "transform 0.4s cubic-bezier(.16,1,.3,1)",
-          width: "min(94%, 1200px)",
+          width: isMobile ? "94%" : "fit-content",
           maxWidth: "1400px",
           zIndex: 5000,
           height: "68px",
@@ -249,9 +249,6 @@ export default function Navbar({ active, scrollToPage, isMobile }) {
               gap: "1.2rem",
               overflowY: "auto",
               WebkitOverflowScrolling: "touch",
-              color: "#22c55e",
-              textShadow:
-                "0 0 8px rgba(34,197,94,0.7), 0 0 16px rgba(34,197,94,0.5)",
             }}
           >
             {/* CLOSE BUTTON */}
