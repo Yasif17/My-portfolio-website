@@ -28,7 +28,7 @@ export default function ScrollCube({ isMobile, introDone, sectionId, mouseRef })
     meshRef.current.rotation.x += mouseTiltX * 0.02;
     meshRef.current.rotation.y += mouseTiltY * 0.02;
 
-    meshRef.current.position.x = isMobile ? 0 : 3.2;
+    meshRef.current.position.x = Math.min(3.2, window.innerWidth / 600);
     meshRef.current.position.y = isMobile ? -1.8 : meshRef.current.position.y;
 
     const targetRotationY = progress * Math.PI;

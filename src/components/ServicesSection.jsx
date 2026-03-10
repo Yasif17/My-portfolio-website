@@ -10,7 +10,6 @@ const ServicesSection = memo(function ServicesSection({
   Reveal,
   SectionDivider,
 }) {
-
   const services = useMemo(
     () => [
       {
@@ -33,7 +32,7 @@ const ServicesSection = memo(function ServicesSection({
     [],
   );
 
-  // ✅ stable handlers 
+  // ✅ stable handlers
   const onRequestQuote = useCallback(() => {
     window.open(
       "https://mail.google.com/mail/?view=cm&fs=1&to=yasiffkhan@gmail.com&su=Service%20Inquiry%20-%20Portfolio%20Website",
@@ -42,7 +41,7 @@ const ServicesSection = memo(function ServicesSection({
   }, []);
 
   const onSeeSocials = useCallback(() => {
-    scrollToPage(8); 
+    scrollToPage(8);
   }, [scrollToPage]);
 
   // ✅ memo styles (prevents new objects per render)
@@ -64,7 +63,7 @@ const ServicesSection = memo(function ServicesSection({
       width: "100%",
       maxWidth: "1500px",
       display: "grid",
-      gridTemplateColumns: isMobile ? "1fr" : "1.1fr 0.9fr",
+      gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
       gap: "5rem",
       alignItems: "center",
       position: "relative",
@@ -171,4 +170,4 @@ const ServicesSection = memo(function ServicesSection({
   );
 });
 
-export default  ServicesSection ;
+export default ServicesSection;

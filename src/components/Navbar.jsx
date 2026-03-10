@@ -59,7 +59,7 @@ export default function Navbar({ active, scrollToPage, isMobile }) {
             visible ? "translateY(0)" : "translateY(-120%)"
           }`,
           transition: "transform 0.4s cubic-bezier(.16,1,.3,1)",
-          width: isMobile ? "94%" : "fit-content",
+          width: "min(94%, 1200px)",
           maxWidth: "1400px",
           zIndex: 5000,
           height: "68px",

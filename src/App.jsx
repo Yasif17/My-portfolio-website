@@ -103,18 +103,22 @@ export default function App() {
     return () => window.removeEventListener("mousemove", handleMove);
   }, []);
 
+  const isTouchDevice = () =>
+    "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
   const [isMobile, setIsMobile] = useState(
-    window.matchMedia("(max-width: 768px)").matches,
+    typeof window !== "undefined"
+      ? window.innerWidth < 900 || isTouchDevice()
+      : false,
   );
 
   useEffect(() => {
-    const media = window.matchMedia("(max-width: 768px)");
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 900 || isTouchDevice());
+    };
 
-    const listener = () => setIsMobile(media.matches);
-
-    media.addEventListener("change", listener);
-
-    return () => media.removeEventListener("change", listener);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const [showCert, setShowCert] = useState(false);

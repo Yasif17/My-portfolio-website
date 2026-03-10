@@ -1,7 +1,7 @@
 // src/styles/inlineStyles.js
 
 export const sectionStyle = (isMobile) => ({
-  minHeight: "100vh",
+  minHeight: "100svh",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
