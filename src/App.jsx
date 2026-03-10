@@ -471,7 +471,7 @@ export default function App() {
                     whiteSpace: "collapse",
                   }}
                 >
-                  Hey, I'm <AnimatedName />— A Software Engineer (Java & Spring Boot)
+                <AnimatedName />— A Software Engineer(Java & Spring Boot)
                 </h1>
                 <p>Architecting Secure & Scalable Backend Systems Specialist</p>
               </Reveal>
