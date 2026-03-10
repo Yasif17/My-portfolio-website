@@ -108,13 +108,7 @@ const ServicesSection = memo(function ServicesSection({
               <div key={i} className="svc-card">
                 <div className="svc-card__glow" />
                 <h3 style={{ margin: 0, marginBottom: "0.6rem" }}>{s.title}</h3>
-                <p
-                  style={{
-                    margin: 0,
-                    color: "rgba(255,255,255,0.85)",
-                    lineHeight: 1.6,
-                  }}
-                >
+                <p style={{ margin: 0, lineHeight: 1.6 }}>
                   {s.desc}
                 </p>
               </div>
@@ -132,7 +126,7 @@ const ServicesSection = memo(function ServicesSection({
                 Engagement Model
               </h3>
 
-              <div style={{ display: "grid", gap: "0.9rem", opacity: 0.85 }}>
+              <div style={{ display: "grid", gap: "0.9rem",}}>
                 {[
                   "Discovery: requirements + references",
                   "Design: UI layout + section flow",
@@ -141,7 +135,7 @@ const ServicesSection = memo(function ServicesSection({
                   "Delivery: deploy + handover",
                 ].map((x, i) => (
                   <div key={i} style={{ display: "flex", gap: "0.6rem" }}>
-                    <span style={{ color: "#22c55e", opacity: 0.9 }}>✔</span>
+                    <span style={{ color: "#22c55e"}}>✔</span>
                     <span>{x}</span>
                   </div>
                 ))}
@@ -162,7 +156,7 @@ const ServicesSection = memo(function ServicesSection({
                 </Button3>
               </div>
 
-              <p style={{ marginTop: "1.4rem", opacity: 0.6, lineHeight: 1.6 }}>
+              <p style={{ marginTop: "1.4rem", lineHeight: 1.6 }}>
                 For best outcomes, share your reference site + target sections +
                 hosting preference.
               </p>
