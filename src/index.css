@@ -698,3 +698,11 @@ canvas {
     0 0 25px rgba(34, 197, 94, 0.8),
     0 0 45px rgba(34, 197, 94, 0.6);
 }
+
+
+
+.svc-card,
+.svc-cta {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
