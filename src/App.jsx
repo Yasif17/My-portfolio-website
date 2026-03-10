@@ -269,14 +269,9 @@ export default function App() {
         <div
           style={{
             position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
+            inset: 0,
             pointerEvents: "none",
-            background: `
-          rgba(37,99,235,0.10)
-        `,
+            background: "transparent",
             zIndex: 0,
           }}
         />
