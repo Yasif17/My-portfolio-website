@@ -188,7 +188,13 @@ const ServicesSection = memo(function ServicesSection({
                 </Button3>
               </div>
 
-              <p style={{ marginTop: "1.4rem", opacity: 0.9, lineHeight: 1.6 }}>
+              <p
+                style={{
+                  marginTop: "1.4rem",
+                  color: "rgba(255,255,255,0.65)",
+                  lineHeight: 1.6,
+                }}
+              >
                 For best outcomes, share your reference site + target sections +
                 hosting preference.
               </p>
