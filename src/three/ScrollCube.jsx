@@ -170,7 +170,7 @@ export default function ScrollCube({
       5: new THREE.Color("#16a34a"),
       6: new THREE.Color("#0000ff"),
       7: new THREE.Color("#008080"),
-      8: new THREE.Color("#026ab0"),
+      8: new THREE.Color("#ffffff"),
     }),
     [],
   );
