@@ -16,6 +16,10 @@ body {
   /* allow vertical scroll */
 }
 
+html{
+  overscroll-behavior-y: contain;
+}
+
 #root {
   width: 100%;
   overflow-x: hidden;
