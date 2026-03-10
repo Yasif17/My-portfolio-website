@@ -24,8 +24,12 @@ export default function ScrollCube({
     meshRef.current.rotation.y += 0.003;
     meshRef.current.rotation.x += Math.sin(t * 0.6) * 0.0008;
 
-    const rawProgress =
-      window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
+
+    let rawProgress = window.scrollY / maxScroll;
+
+    // clamp scroll progress so mobile momentum cannot overshoot
+    rawProgress = THREE.MathUtils.clamp(rawProgress, 0, 1);
 
     // smooth mobile scroll momentum
     // smoothScroll.current = THREE.MathUtils.lerp(
@@ -34,11 +38,9 @@ export default function ScrollCube({
     //   0.08,
     // );
 
-    smoothScroll.current = THREE.MathUtils.lerp(
-      smoothScroll.current,
-      rawProgress,
-      isMobile ? 0.05 : 0.08,
-    );
+    const smoothFactor = isMobile ? 0.04 : 0.08;
+
+    smoothScroll.current += (rawProgress - smoothScroll.current) * smoothFactor;
 
     const progress = smoothScroll.current;
 
@@ -111,8 +113,8 @@ export default function ScrollCube({
 
     // camera micro-parallax
     // Smooth cinematic camera parallax
-    const mx = mouseRef.current.x;
-    const my = mouseRef.current.y;
+    const mx = isMobile ? 0 : mouseRef.current.x;
+    const my = isMobile ? 0 : mouseRef.current.y;
 
     // ring tilt
     meshRef.current.rotation.x += my * 0.02;
