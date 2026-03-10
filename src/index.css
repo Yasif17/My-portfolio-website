@@ -5,6 +5,21 @@
   box-sizing: border-box;
 }
 
+/* Hide scrollbar for Chrome, Safari, Edge */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+* {
+  scrollbar-width: none;
+}
+
+/* Optional - prevents layout shift */
+body {
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+}
 
 html,
 body {
@@ -14,10 +29,6 @@ body {
   background: #000000;
   overflow-x: hidden;
   /* allow vertical scroll */
-}
-
-html{
-  overscroll-behavior-y: contain;
 }
 
 #root {
