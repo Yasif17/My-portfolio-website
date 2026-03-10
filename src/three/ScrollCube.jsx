@@ -62,7 +62,7 @@ const progress = smoothScroll.current;
     );
 
     meshRef.current.rotation.z = state.clock.elapsedTime * 0.08;
-   meshRef.current.position.y += Math.sin(state.clock.elapsedTime * 0.5) * 0.03;
+   meshRef.current.position.y += Math.sin(state.clock.elapsedTime * 0.5) * 0.02;
 
     // ✅ smooth scale across sections (no double writes)
     const base = isMobile ? 0.62 : 0.92;
@@ -129,7 +129,7 @@ const progress = smoothScroll.current;
     // emissive pulse
     const baseIntensity = 0.25;
     const pulse =
-      baseIntensity + Math.sin(state.clock.elapsedTime * 1.5) * 0.04;
+      baseIntensity + Math.sin(state.clock.elapsedTime * 1.5) * 0.08;
     if (materialRef.current) materialRef.current.emissiveIntensity = pulse;
 
     // color per section
