@@ -1,6 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
-import StarsParallax from "../three/StarsParallax";
+// import StarsParallax from "../three/StarsParallax";
 import ScrollCube from "../three/ScrollCube";
 
 export default function CanvasScene({ isMobile, introDone, mouseRef, sectionId }) {
@@ -56,7 +56,7 @@ export default function CanvasScene({ isMobile, introDone, mouseRef, sectionId }
           </EffectComposer>
         )}
 
-        <StarsParallax introDone={introDone} isMobile={isMobile} />
+        {/* <StarsParallax introDone={introDone} isMobile={isMobile} /> */}
 
         <ScrollCube
           isMobile={isMobile}
