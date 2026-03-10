@@ -28,7 +28,7 @@ export default function CanvasScene({ isMobile, introDone, mouseRef, sectionId }
         }}
         frameloop="always"
         shadows={false}
-        dpr={[1, 1.5]}
+        dpr={isMobile ? 1 : [1, 1.2]}
         gl={{
           antialias: false,
           powerPreference: "high-performance",
