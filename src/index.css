@@ -3,6 +3,8 @@
 
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent; /* 👈 add this */
+  scrollbar-width: none;
 }
 
 /* Hide scrollbar for Chrome, Safari, Edge */
