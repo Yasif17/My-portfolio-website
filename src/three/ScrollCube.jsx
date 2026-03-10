@@ -62,7 +62,7 @@ const progress = smoothScroll.current;
     );
 
     meshRef.current.rotation.z = state.clock.elapsedTime * 0.08;
-   meshRef.current.position.y += Math.sin(state.clock.elapsedTime * 0.5) * 0.02;
+   meshRef.current.position.y += Math.sin(state.clock.elapsedTime * 0.5) * 0.07;
 
     // ✅ smooth scale across sections (no double writes)
     const base = isMobile ? 0.62 : 0.92;
