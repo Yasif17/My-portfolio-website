@@ -8,7 +8,6 @@ export default function ScrollCube({ isMobile, introDone, sectionId, mouseRef })
 
   const materialRef = useRef();
   const scaleRef = useRef(0.6);
-  const smoothScroll = useRef(0);
 
   useFrame((state) => {
     if (!meshRef.current) return;
@@ -19,17 +18,8 @@ export default function ScrollCube({ isMobile, introDone, sectionId, mouseRef })
     meshRef.current.rotation.y += 0.003;
     meshRef.current.rotation.x += Math.sin(t * 0.6) * 0.0008;
 
-    const rawProgress =
-  window.scrollY / (document.body.scrollHeight - window.innerHeight);
-
-// smooth mobile scroll momentum
-smoothScroll.current = THREE.MathUtils.lerp(
-  smoothScroll.current,
-  rawProgress,
-  0.08
-);
-
-const progress = smoothScroll.current;
+    const progress =
+      window.scrollY / (document.body.scrollHeight - window.innerHeight);
 
     // 3D mouse tilt effect
     const mouseTiltX = state.mouse.y * 0.6;
@@ -62,7 +52,7 @@ const progress = smoothScroll.current;
     );
 
     meshRef.current.rotation.z = state.clock.elapsedTime * 0.08;
-   meshRef.current.position.y += Math.sin(state.clock.elapsedTime * 0.5) * 0.03;
+    meshRef.current.position.y += Math.sin(state.clock.elapsedTime) * 0.05;
 
     // ✅ smooth scale across sections (no double writes)
     const base = isMobile ? 0.62 : 0.92;
@@ -129,7 +119,7 @@ const progress = smoothScroll.current;
     // emissive pulse
     const baseIntensity = 0.25;
     const pulse =
-      baseIntensity + Math.sin(state.clock.elapsedTime * 1.5) * 0.04;
+      baseIntensity + Math.sin(state.clock.elapsedTime * 1.5) * 0.08;
     if (materialRef.current) materialRef.current.emissiveIntensity = pulse;
 
     // color per section
@@ -149,7 +139,7 @@ const progress = smoothScroll.current;
       5: new THREE.Color("#16a34a"),
       6: new THREE.Color("#0000ff"),
       7: new THREE.Color("#008080"),
-      8: new THREE.Color("#026ab0"),
+      8: new THREE.Color("#ffffff"),
     }),
     [],
   );
@@ -157,12 +147,12 @@ const progress = smoothScroll.current;
   return (
     <mesh ref={meshRef}>
       <torusGeometry
-        args={isMobile ? [1.8, 0.35, 12, 30] : [1.8, 0.35, 18, 50]}
+        args={isMobile ? [1.8, 0.35, 12, 30] : [1.8, 0.35, 16, 50]}
       />
       <meshPhysicalMaterial
         ref={materialRef}
         color="#22c55e"
-        metalness={1.2}
+        metalness={0.9}
         roughness={0.2}
         clearcoat={1}
         clearcoatRoughness={0.08}
