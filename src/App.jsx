@@ -1164,7 +1164,7 @@ export default function App() {
                   }}
                 >
                   <img
-                    src="/public/pick9.png"
+                    src="/pick9.png"
                     alt="Yasif khan backend engineer"
                     style={{
                       width: "100%",
