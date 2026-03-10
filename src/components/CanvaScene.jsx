@@ -41,16 +41,16 @@ export default function CanvasScene({ isMobile, introDone, mouseRef, sectionId }
         <fog attach="fog" args={["#000000", 10, 20]} />
 
         <ambientLight intensity={0.25} />
-        <directionalLight position={[5, 5, 5]} intensity={1.1} />
+        <directionalLight position={[5, 5, 5]} intensity={2.1} />
         <pointLight position={[-4, 2, -3]} intensity={1.8} color="#22c55e" />
-        <pointLight position={[4, -2, 2]} intensity={0.6} color="#22c55e" />
+        <pointLight position={[4, -2, 2]} intensity={0.9} color="#22c55e" />
 
         {!isMobile && (
           <EffectComposer multisampling={0}>
             <Bloom
-              intensity={0.5}
+              intensity={0.9}
               luminanceThreshold={0.6}
-              luminanceSmoothing={0.9}
+              luminanceSmoothing={1.9}
               mipmapBlur
             />
           </EffectComposer>
