@@ -3,7 +3,12 @@ import { useFrame } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
 
-export default function ScrollCube({ isMobile, introDone, sectionId, mouseRef }) {
+export default function ScrollCube({
+  isMobile,
+  introDone,
+  sectionId,
+  mouseRef,
+}) {
   const meshRef = useRef();
 
   const materialRef = useRef();
@@ -20,16 +25,22 @@ export default function ScrollCube({ isMobile, introDone, sectionId, mouseRef })
     meshRef.current.rotation.x += Math.sin(t * 0.6) * 0.0008;
 
     const rawProgress =
-  window.scrollY / (document.body.scrollHeight - window.innerHeight);
+      window.scrollY / (document.body.scrollHeight - window.innerHeight);
 
-// smooth mobile scroll momentum
-smoothScroll.current = THREE.MathUtils.lerp(
-  smoothScroll.current,
-  rawProgress,
-  0.08
-);
+    // smooth mobile scroll momentum
+    // smoothScroll.current = THREE.MathUtils.lerp(
+    //   smoothScroll.current,
+    //   rawProgress,
+    //   0.08,
+    // );
 
-const progress = smoothScroll.current;
+    smoothScroll.current = THREE.MathUtils.lerp(
+      smoothScroll.current,
+      rawProgress,
+      isMobile ? 0.05 : 0.08,
+    );
+
+    const progress = smoothScroll.current;
 
     // 3D mouse tilt effect
     const mouseTiltX = state.mouse.y * 0.6;
@@ -39,11 +50,21 @@ const progress = smoothScroll.current;
     meshRef.current.rotation.y += mouseTiltY * 0.02;
 
     meshRef.current.position.x = isMobile ? 0 : 3.2;
-    meshRef.current.position.y = isMobile ? -1.8 : meshRef.current.position.y;
+    // meshRef.current.position.y = isMobile ? -1.8 : meshRef.current.position.y;
+
+    // const targetRotationY = progress * Math.PI;
+    // const targetRotationX = progress * Math.PI;
+    // const targetY = progress * 1.5 - 1;
 
     const targetRotationY = progress * Math.PI;
     const targetRotationX = progress * Math.PI;
-    const targetY = progress * 1.5 - 1;
+
+    const baseY = isMobile ? -1.8 : -1;
+    const scrollRange = isMobile ? 1.2 : 1.5;
+    const floatOffset =
+      Math.sin(state.clock.elapsedTime * 0.5) * (isMobile ? 0.01 : 0.02);
+
+    const targetY = baseY + progress * scrollRange + floatOffset;
 
     meshRef.current.rotation.y = THREE.MathUtils.lerp(
       meshRef.current.rotation.y,
@@ -58,11 +79,11 @@ const progress = smoothScroll.current;
     meshRef.current.position.y = THREE.MathUtils.lerp(
       meshRef.current.position.y,
       targetY,
-      0.08,
+      isMobile ? 0.05 : 0.08,
     );
 
     meshRef.current.rotation.z = state.clock.elapsedTime * 0.08;
-   meshRef.current.position.y += Math.sin(state.clock.elapsedTime * 0.5) * 0.02;
+    //  meshRef.current.position.y += Math.sin(state.clock.elapsedTime * 0.5) * 0.02;
 
     // ✅ smooth scale across sections (no double writes)
     const base = isMobile ? 0.62 : 0.92;
