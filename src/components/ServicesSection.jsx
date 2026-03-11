@@ -126,7 +126,16 @@ const ServicesSection = memo(function ServicesSection({
                 Engagement Model
               </h3>
 
-              <div style={{ display: "grid", gap: "0.9rem", opacity: 0.85 }}>
+              <div
+                style={{
+                  display: "grid",
+                  gap: "0.9rem",
+                  opacity: 0.85,
+                  color: "#22c55e",
+                  textShadow:
+                    "0 0 8px rgba(34,197,94,0.7), 0 0 16px rgba(34,197,94,0.5)",
+                }}
+              >
                 {[
                   "Discovery: requirements + references",
                   "Design: UI layout + section flow",
@@ -135,7 +144,7 @@ const ServicesSection = memo(function ServicesSection({
                   "Delivery: deploy + handover",
                 ].map((x, i) => (
                   <div key={i} style={{ display: "flex", gap: "0.6rem" }}>
-                    <span style={{ color: "#22c55e", opacity: 0.9 }}>✔</span>
+                    <span style={{ color: "#ffffff", opacity: 0.9 }}>✔</span>
                     <span>{x}</span>
                   </div>
                 ))}

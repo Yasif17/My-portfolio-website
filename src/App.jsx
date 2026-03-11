@@ -285,21 +285,24 @@ export default function App() {
           }}
         />
 
-        <div
-          ref={cursorDotRef}
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "6px",
-            height: "6px",
-            background: "#22c55e",
-            borderRadius: "50%",
-            pointerEvents: "none",
-            transform: "translate(-50%, -50%)",
-            zIndex: 5001,
-          }}
-        />
+        {!isMobile && (
+          <div
+            ref={cursorDotRef}
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "6px",
+              height: "6px",
+              background: "#22c55e",
+              borderRadius: "50%",
+              pointerEvents: "none",
+              transform: "translate(-50%, -50%)",
+              zIndex: 5001,
+              boxShadow: "0 0 8px #22c55e",
+            }}
+          />
+        )}
 
         {/* ✅ Canvas ABOVE gradient */}
         <Suspense fallback={null}>
@@ -631,7 +634,7 @@ export default function App() {
                   { label: "Java & Spring Boot", value: 90 },
                   { label: "Authentication & Security", value: 85 },
                   { label: "Database Optimization", value: 80 },
-                  { label: "Cloud Deployment (AWS)", value: 75 },
+                  { label: "Cloud Deployment (AWS)", value: 70 },
                 ].map((item, i) => (
                   <div key={i} style={{ marginBottom: "2rem" }}>
                     {/* Label */}
@@ -667,7 +670,7 @@ export default function App() {
                           borderRadius: "20px",
                           background: "white",
                           boxShadow: "0 0 18px rgba(34,197,94,0.6)",
-                          transition: `width 1.2s cubic-bezier(0.22, 1, 0.36, 1) ${i * 250}ms`,
+                          transition: `width 7.2s cubic-bezier(0.22, 1, 0.36, 1) ${i * 350}ms`,
                         }}
                       />
                     </div>
