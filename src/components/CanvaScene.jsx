@@ -66,6 +66,7 @@ export default function CanvasScene({
 
         <StarsParallax introDone={introDone} isMobile={isMobile} />
           <ScrollCube
+            isMobile={isMobile}
             introDone={introDone}
             sectionId={sectionId}
             mouseRef={mouseRef}
