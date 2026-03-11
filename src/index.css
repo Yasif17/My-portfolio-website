@@ -684,11 +684,3 @@ canvas {
     0 0 25px rgba(34,197,94,0.8),
     0 0 45px rgba(34,197,94,0.6);
 }
-
-
-canvas {
-  position: fixed !important;
-  inset: 0;
-  pointer-events: none;
-  contain: strict;
-}
