@@ -64,7 +64,7 @@ const ServicesSection = memo(function ServicesSection({
       width: "100%",
       maxWidth: "1500px",
       display: "grid",
-      gridTemplateColumns: isMobile ? "1fr" : "1.1fr 0.9fr",
+      gridTemplateColumns: "1.1fr 0.9fr",
       gap: "5rem",
       alignItems: "center",
       position: "relative",
