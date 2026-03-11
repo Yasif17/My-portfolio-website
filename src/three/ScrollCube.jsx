@@ -3,7 +3,12 @@ import { useFrame } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
 
-export default function ScrollCube({ isMobile, introDone, sectionId, mouseRef }) {
+export default function ScrollCube({
+  isMobile,
+  introDone,
+  sectionId,
+  mouseRef,
+}) {
   const meshRef = useRef();
 
   const materialRef = useRef();
@@ -28,8 +33,12 @@ export default function ScrollCube({ isMobile, introDone, sectionId, mouseRef })
     meshRef.current.rotation.x += mouseTiltX * 0.02;
     meshRef.current.rotation.y += mouseTiltY * 0.02;
 
-    meshRef.current.position.x = isMobile ? 0 : 3.2;
-    meshRef.current.position.y = isMobile ? -1.8 : meshRef.current.position.y;
+    if (isMobile) {
+      meshRef.current.position.x = 0;
+      meshRef.current.position.y = -0.3; // centered for mobile
+    } else {
+      meshRef.current.position.x = 3.2;
+    }
 
     const targetRotationY = progress * Math.PI;
     const targetRotationX = progress * Math.PI;
@@ -80,8 +89,8 @@ export default function ScrollCube({ isMobile, introDone, sectionId, mouseRef })
 
     // camera micro-parallax
     // Smooth cinematic camera parallax
-    const mx = mouseRef.current.x;
-    const my = mouseRef.current.y;
+    const mx = isMobile ? 0 : mouseRef.current.x;
+    const my = isMobile ? 0 : mouseRef.current.y;
 
     // ring tilt
     meshRef.current.rotation.x += my * 0.02;
