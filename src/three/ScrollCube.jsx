@@ -39,7 +39,7 @@ export default function ScrollCube({
       meshRef.current.position.x = 0;
       meshRef.current.position.y = -0.3;
     } else {
-      meshRef.current.position.x = 3.2;
+      meshRef.current.position.x = Math.min(3.2, window.innerWidth / 600);
     }
 
     const targetRotationY = progress * Math.PI;
