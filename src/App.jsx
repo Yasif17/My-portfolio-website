@@ -103,13 +103,18 @@ export default function App() {
     return () => window.removeEventListener("mousemove", handleMove);
   }, []);
 
+  const isTouchDevice = () =>
+    "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
   const [isMobile, setIsMobile] = useState(
-    typeof window !== "undefined" ? window.innerWidth < 900 : false,
+    typeof window !== "undefined"
+      ? window.innerWidth < 900 || isTouchDevice()
+      : false,
   );
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 900);
+      setIsMobile(window.innerWidth < 900 || isTouchDevice());
     };
 
     window.addEventListener("resize", handleResize);
