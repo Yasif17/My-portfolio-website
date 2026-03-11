@@ -33,13 +33,11 @@ export default function ScrollCube({
     meshRef.current.rotation.x += mouseTiltX * 0.02;
     meshRef.current.rotation.y += mouseTiltY * 0.02;
 
-    const mobile = window.innerWidth < 900;
-
-    if (mobile) {
+    if (isMobile) {
       meshRef.current.position.x = 0;
       meshRef.current.position.y = -0.3;
     } else {
-      meshRef.current.position.x = Math.min(3.2, window.innerWidth / 600);
+      meshRef.current.position.x = 3.2;
     }
 
     const targetRotationY = progress * Math.PI;
