@@ -136,7 +136,7 @@ Or connect your **GitHub repository directly to Vercel** for automatic deploymen
 
 # 📸 Preview
 
-Add screenshots of your portfolio here.
+Screenshots of portfolio is here.
 
 Example:
 
@@ -144,6 +144,7 @@ Example:
 /public/preview-1.png
 /public/preview-2.png
 /public/preview-3.png
+public/preview-2.png
 ```
 
 ---
