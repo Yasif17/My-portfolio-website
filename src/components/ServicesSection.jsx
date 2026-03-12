@@ -107,7 +107,7 @@ const ServicesSection = memo(function ServicesSection({
             {services.map((s, i) => (
               <div key={i} className="svc-card">
                 <div className="svc-card__glow" />
-                <h3 style={{ margin: 0, marginBottom: "0.6rem" }}>{s.title}</h3>
+                <h3 style={{ margin: 0,color: "rgba(255,255,255,0.58)", marginBottom: "0.6rem" }}>{s.title}</h3>
                 <p style={{ margin: 0, color: "rgba(255,255,255,0.78)", lineHeight: 1.6 }}>
                   {s.desc}
                 </p>
@@ -122,7 +122,7 @@ const ServicesSection = memo(function ServicesSection({
             <div className="svc-cta">
               <div className="svc-cta__glow" />
 
-              <h3 style={{ marginTop: 0, marginBottom: "1rem" }}>
+              <h3 style={{ marginTop: 0,color: "rgba(255,255,255,0.58)", marginBottom: "1rem" }}>
                 Engagement Model
               </h3>
 

@@ -53,7 +53,7 @@ const StyledWrapper = styled.div`
     font-size: 0.825rem;
     line-height: 1rem;
 
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.8);
     box-shadow:
       inset 0 1px 0 0 rgba(255, 255, 255, 0.04),
       inset 0 0 0 1px rgba(255, 255, 255, 0.04);
