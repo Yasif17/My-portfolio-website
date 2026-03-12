@@ -184,7 +184,7 @@ const ServicesSection = memo(function ServicesSection({
                 <Button3 onClick={onRequestQuote}>Req a Quote</Button3>
 
                 <Button3 onClick={onSeeSocials} variant="transparent">
-                  Socials
+                  Get Socials
                 </Button3>
               </div>
 
