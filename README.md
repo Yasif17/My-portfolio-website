@@ -101,7 +101,7 @@ git clone https://github.com/Yasif17/My-portfolio-website.git
 Navigate into the project:
 
 ```bash
-cd your-repo-name
+cd My-portfolio-website
 ```
 
 Install dependencies:
