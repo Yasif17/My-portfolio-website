@@ -1300,6 +1300,7 @@ export default function App() {
           </section>
 
           {/* CONTACT */}
+
           <section
             style={{
               ...sectionStyle(isMobile),
@@ -1307,75 +1308,151 @@ export default function App() {
               alignItems: "center",
               justifyContent: "center",
               position: "relative",
+              width: "100%",
             }}
           >
             <div
               style={{
-                maxWidth: "900px",
                 width: "100%",
-                padding: "0 2rem",
-                textAlign: "center",
+                maxWidth: "1600px",
+                margin: "0 auto",
+                padding: isMobile ? "0 1.5rem" : "0 4rem",
+                display: "grid",
+                gridTemplateColumns: isMobile ? "1fr" : "1.3fr 1fr",
+                gap: isMobile ? "3rem" : "6rem",
+                alignItems: "center",
               }}
             >
-              <Reveal delay={0}>
-                <h2 style={sectionTitle(isMobile)}>
-                  Let’s Engineer Your Next Scalable End-to-End website.
-                </h2>
-              </Reveal>
-
-              <Reveal delay={150}>
-                <p
-                  style={{
-                    opacity: 0.75,
-                    marginTop: "1.5rem",
-                    fontSize: "1.2rem",
-                    maxWidth: "600px",
-                    marginInline: "auto",
-                    lineHeight: 1.6,
-                  }}
-                >
-                  I'm open to backend engineering roles where I can design
-                  secure, production-ready systems and contribute to scalable
-                  architecture.
-                  <ShinySpan>
-                    Want a production-ready platform like this? Let’s create it
-                  </ShinySpan>
-                </p>
-              </Reveal>
-
-              <Reveal delay={300}>
-                <div
-                  style={{
-                    marginTop: "2.5rem",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexDirection: isMobile ? "column" : "row",
-                    gap: "1.5rem",
-                  }}
-                >
-                  <Button3
-                    onClick={() =>
-                      window.open(
-                        "https://mail.google.com/mail/?view=cm&fs=1&to=yasiffkhan@gmail.com",
-                        "_blank",
-                      )
-                    }
+              {/* LEFT SIDE */}
+              <div style={{ width: "100%" }}>
+                <Reveal delay={0}>
+                  <h2
+                    style={{
+                      ...sectionTitle(isMobile),
+                      textAlign: "left",
+                      marginBottom: "2rem",
+                    }}
                   >
-                    Email Me
-                  </Button3>
-
-                  <Button3
-                    variant="transparent"
-                    onClick={() =>
-                      window.open("https://github.com/Yasif17", "_blank")
-                    }
+                    Let’s Engineer Your Next Scalable End-to-End website.
+                  </h2>
+                </Reveal>
+                <Reveal delay={120}>
+                  <p
+                    style={{
+                      opacity: 0.75,
+                      fontSize: "1.25rem",
+                      lineHeight: 1.8,
+                      maxWidth: isMobile ? "100%" : "680px",
+                    }}
                   >
-                    GitHub
-                  </Button3>
-                </div>
-              </Reveal>
+                    I'm open to backend engineering roles where I can design
+                    secure, production-ready systems and contribute to scalable
+                    architecture.
+                  </p>
+                </Reveal>
+              </div>
+              {/* RIGHT SIDE */}
+              <div style={{ width: "100%", maxWidth: "620px" }}>
+                {/* SHINY CTA */}
+                <Reveal delay={180}>
+                  <p
+                    style={{
+                      marginBottom: "1.4rem",
+                      fontSize: "1.1rem",
+                      opacity: 0.9,
+                      textAlign: isMobile ? "center" : "left",
+                    }}
+                  >
+                    <ShinySpan>
+                      Want a production-ready platform like this? Let’s create
+                      it
+                    </ShinySpan>
+                  </p>
+                </Reveal>
+
+                {/* CONTACT FORM */}
+                <Reveal delay={250}>
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+
+                      const form = e.target;
+                      const name = form.name.value;
+                      const email = form.email.value;
+                      const message = form.message.value;
+
+                      const mailto = `mailto:yasiffkhan@gmail.com?subject=Portfolio Contact from ${name}&body=${encodeURIComponent(
+                        message + "\n\nFrom: " + name + " (" + email + ")",
+                      )}`;
+
+                      window.location.href = mailto;
+                    }}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "1.1rem",
+                      padding: "2.3rem",
+                      borderRadius: "24px",
+                      background: "rgba(255,255,255,0.05)",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                      backdropFilter: "blur(14px)",
+                      boxShadow: "0 30px 70px rgba(0,0,0,0.55)",
+                    }}
+                  >
+                    <input
+                      name="name"
+                      placeholder="Your Name"
+                      required
+                      style={{
+                        padding: "1rem 1.1rem",
+                        borderRadius: "14px",
+                        border: "1px solid rgba(255,255,255,0.12)",
+                        background: "rgba(0,0,0,0.45)",
+                        color: "white",
+                        fontSize: "1rem",
+                        outline: "none",
+                      }}
+                    />
+
+                    <input
+                      name="email"
+                      type="email"
+                      placeholder="Your Email"
+                      required
+                      style={{
+                        padding: "1rem 1.1rem",
+                        borderRadius: "14px",
+                        border: "1px solid rgba(255,255,255,0.12)",
+                        background: "rgba(0,0,0,0.45)",
+                        color: "white",
+                        fontSize: "1rem",
+                        outline: "none",
+                      }}
+                    />
+
+                    <textarea
+                      name="message"
+                      placeholder="Your Message"
+                      rows="5"
+                      required
+                      style={{
+                        padding: "1rem 1.1rem",
+                        borderRadius: "14px",
+                        border: "1px solid rgba(255,255,255,0.12)",
+                        background: "rgba(0,0,0,0.45)",
+                        color: "white",
+                        fontSize: "1rem",
+                        resize: "vertical",
+                        outline: "none",
+                      }}
+                    />
+
+                    <Button3 type="submit">Send Message</Button3>
+                  </form>
+                </Reveal>
+              </div>
             </div>
+
             <SectionDivider isMobile={isMobile} />
           </section>
 

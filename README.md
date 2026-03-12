@@ -1,21 +1,228 @@
-<<<<<<< HEAD
-# React + Vite
+# 🚀 Yasif Khan – 3D Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-performance **3D developer portfolio** built using **React, Three.js, and React Three Fiber**, designed to showcase backend engineering projects, system design knowledge, and scalable software architecture.
 
-Currently, two official plugins are available:
+This portfolio demonstrates modern **interactive UI/UX**, **3D WebGL rendering**, and **production-ready frontend architecture**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🌐 **Live Website:**
+https://yasif-portfolio.vercel.app/
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# ✨ Features
 
-## Expanding the ESLint configuration
+* 🌌 **3D WebGL Background** using Three.js and React Three Fiber
+* 🧠 **Interactive Starfield with Depth Parallax**
+* 🎯 **Scroll-controlled 3D Cube Interaction**
+* ⚡ **Lazy-loaded sections for performance optimization**
+* 🎨 **Glassmorphism UI with animated transitions**
+* 📱 **Fully responsive design**
+* 🚀 **Optimized rendering pipeline for smooth performance**
+* 📊 **Dynamic section animations with Intersection Observer**
+* 🔗 **Integrated social & contact platform**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# My-portfolio-website
-This is the full code here. To build my portfolio. i use React,three.js and optimized it and it is also SEO friendly. 
->>>>>>> f064807ac7ea952bbfd79730cb17854221a1ae88
+---
+
+# 🧠 Portfolio Architecture
+
+The application is structured using a **modular component architecture** designed for scalability and maintainability.
+
+```
+src
+│
+├── components
+│   ├── Navbar.jsx
+│   ├── HtmlSections.jsx
+│   ├── ServicesSection.jsx
+│   ├── SkillsDock.jsx
+│   ├── Reveal.jsx
+│
+├── three
+│   ├── StarsLayer.jsx
+│   ├── StarsParallax.jsx
+│   └── ScrollCube.jsx
+│
+├── ui
+│   ├── ScrollProgress.jsx
+│   ├── AnimatedName.jsx
+│   ├── SectionDivider.jsx
+│   └── injectKeyFramesOnce.jsx
+│
+├── styles
+│   └── inlineStyle.js
+│
+└── App.jsx
+```
+
+This structure ensures:
+
+* separation of concerns
+* optimized rendering
+* scalable frontend architecture
+
+---
+
+# 🛠 Tech Stack
+
+## Frontend
+
+* React
+* JavaScript (ES6+)
+* Vite
+* CSS3
+
+## 3D Rendering
+
+* Three.js
+* React Three Fiber
+* Drei
+
+## UI / Animation
+
+* Styled Components
+* Intersection Observer API
+* Custom scroll animation engine
+
+## Deployment
+
+* Vercel
+* GitHub
+
+---
+
+# 📦 Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Yasif17/My-portfolio-website.git
+```
+
+Navigate into the project:
+
+```bash
+cd My-portfolio-website
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
+
+```bash
+npm run dev
+```
+
+---
+
+# 🚀 Deployment
+
+The portfolio is deployed using **Vercel**.
+
+To deploy manually:
+
+```
+npm run build
+```
+
+Then upload the build folder to Vercel.
+
+Or connect your **GitHub repository directly to Vercel** for automatic deployments.
+
+---
+
+# 📸 Preview
+
+Screenshots of portfolio is here.
+
+Example:
+
+```
+/public/preview-1.png
+/public/preview-2.png
+/public/preview-3.png
+```
+
+---
+
+# 🧩 Portfolio Sections
+
+The portfolio includes the following sections:
+
+* Hero Introduction
+* About & Technical Background
+* Featured Backend Projects
+* Technology Stack
+* Professional Services
+* Engineering Expertise
+* System Capabilities
+* Professional Presence
+* Contact Section
+
+---
+
+# 📚 Featured Projects
+
+### Cab Booking System
+
+Secure backend system built with:
+
+* Spring Boot
+* JWT Authentication
+* RBAC Authorization
+* PostgreSQL
+* AWS Deployment
+
+### Microservices Job Platform
+
+Enterprise architecture using:
+
+* Spring Boot
+* Kafka
+* Docker
+* Kubernetes
+* Neo4j
+
+---
+
+# ⚡ Performance Optimization
+
+The application includes several performance strategies:
+
+* Lazy rendering of heavy sections
+* GPU-accelerated animations
+* Optimized WebGL rendering
+* Scroll-based animation control
+* Minimal bundle size via Vite
+
+---
+
+# 👨‍💻 Author
+
+**Yasif Khan**
+
+Backend Engineer | Java & Spring Boot Specialist
+
+GitHub
+https://github.com/Yasif17
+
+LinkedIn
+https://linkedin.com/in/yasif-khan-7b26732ba
+
+Medium
+https://medium.com/@yasiffkhan
+
+---
+
+# ⭐ Support
+
+If you like this project, consider giving it a ⭐ on GitHub!
+
+---
+
+# 📄 License
+
+This project is licensed under the MIT License.
