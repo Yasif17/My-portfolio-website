@@ -26,6 +26,7 @@ import SkillsDock from "./components/SkillsDock";
 import Navbar from "./components/Navbar";
 import ServicesSection from "./components/ServicesSection";
 import Reveal from "./components/Reveal";
+import Resume from "./Projects buttons/Resume";
 const CanvasScene = lazy(() => import("./components/CanvaScene"));
 
 /* ================= APP ================= */
@@ -501,7 +502,7 @@ export default function App() {
                 >
                   <Button3 onClick={() => scrollToPage(2)}>Projects</Button3>
 
-                  <Button4 onClick={() => scrollToPage(7)}>Let's Talk!</Button4>
+                  <Resume />
                 </div>
               </Reveal>
             </div>

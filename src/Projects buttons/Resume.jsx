@@ -41,9 +41,9 @@ const StyledWrapper = styled.div`
     justify-content: center;
     gap: 4px;
 
-    padding: 6px 36px;
+    padding: 11px 36px;
     border: 4px solid transparent;
-    font-size: 16px;
+    font-size: 12px;
     background-color: inherit;
     border-radius: 100px;
     font-weight: 600;
