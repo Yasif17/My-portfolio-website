@@ -34,14 +34,11 @@ const ServicesSection = memo(function ServicesSection({
 
   // ✅ stable handlers
   const onRequestQuote = useCallback(() => {
-    window.open(
-      "https://mail.google.com/mail/?view=cm&fs=1&to=yasiffkhan@gmail.com&su=Service%20Inquiry%20-%20Portfolio%20Website",
-      "_blank",
-    );
-  }, []);
+    scrollToPage(8); // contact section
+  }, [scrollToPage]);
 
   const onSeeSocials = useCallback(() => {
-    scrollToPage(8);
+    scrollToPage(7); // socials section
   }, [scrollToPage]);
 
   // ✅ memo styles (prevents new objects per render)
@@ -95,7 +92,13 @@ const ServicesSection = memo(function ServicesSection({
           </Reveal>
 
           <Reveal delay={120}>
-            <p style={{ ...paragraphStyle, maxWidth: "680px", color: "rgba(255,255,255,0.78)" }}>
+            <p
+              style={{
+                ...paragraphStyle,
+                maxWidth: "680px",
+                color: "rgba(255,255,255,0.78)",
+              }}
+            >
               I build high-impact backend systems and premium 3D portfolio like
               this one and any kind of websites you want. If you want a modern,
               conversion-focused presence with a high-performance delivery, I
@@ -107,8 +110,22 @@ const ServicesSection = memo(function ServicesSection({
             {services.map((s, i) => (
               <div key={i} className="svc-card">
                 <div className="svc-card__glow" />
-                <h3 style={{ margin: 0,color: "rgba(255,255,255,0.58)", marginBottom: "0.6rem" }}>{s.title}</h3>
-                <p style={{ margin: 0, color: "rgba(255,255,255,0.78)", lineHeight: 1.6 }}>
+                <h3
+                  style={{
+                    margin: 0,
+                    color: "rgba(255,255,255,0.58)",
+                    marginBottom: "0.6rem",
+                  }}
+                >
+                  {s.title}
+                </h3>
+                <p
+                  style={{
+                    margin: 0,
+                    color: "rgba(255,255,255,0.78)",
+                    lineHeight: 1.6,
+                  }}
+                >
                   {s.desc}
                 </p>
               </div>
@@ -122,7 +139,13 @@ const ServicesSection = memo(function ServicesSection({
             <div className="svc-cta">
               <div className="svc-cta__glow" />
 
-              <h3 style={{ marginTop: 0,color: "rgba(255,255,255,0.58)", marginBottom: "1rem" }}>
+              <h3
+                style={{
+                  marginTop: 0,
+                  color: "rgba(255,255,255,0.58)",
+                  marginBottom: "1rem",
+                }}
+              >
                 Engagement Model
               </h3>
 
@@ -144,7 +167,7 @@ const ServicesSection = memo(function ServicesSection({
                   "Delivery: deploy + handover",
                 ].map((x, i) => (
                   <div key={i} style={{ display: "flex", gap: "0.6rem" }}>
-                    <span style={{  color: "rgba(255,255,255,0.78)" }}>✔</span>
+                    <span style={{ color: "rgba(255,255,255,0.78)" }}>✔</span>
                     <span>{x}</span>
                   </div>
                 ))}
@@ -161,11 +184,17 @@ const ServicesSection = memo(function ServicesSection({
                 <Button3 onClick={onRequestQuote}>Req a Quote</Button3>
 
                 <Button3 onClick={onSeeSocials} variant="transparent">
-                  Contact Me
+                  Socials
                 </Button3>
               </div>
 
-              <p style={{ marginTop: "1.4rem", color: "rgba(255,255,255,0.78)", lineHeight: 1.6 }}>
+              <p
+                style={{
+                  marginTop: "1.4rem",
+                  color: "rgba(255,255,255,0.78)",
+                  lineHeight: 1.6,
+                }}
+              >
                 For best outcomes, share your reference site + target sections +
                 hosting preference.
               </p>

@@ -6,6 +6,7 @@ import Button3 from "./Projects buttons/Button3";
 import Button4 from "./Projects buttons/Button4";
 import ShinySpan from "./Projects buttons/ShiningEffect";
 import styled, { keyframes } from "styled-components";
+import ContactForm from "./components/ContactForm";
 import {
   sectionStyle,
   containerStyle,
@@ -31,47 +32,6 @@ const CanvasScene = lazy(() => import("./components/CanvaScene"));
 
 /* ================= APP ================= */
 
-const fadeSlide = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
-const subtleShine = keyframes`
-  0% { background-position: -150% 0; }
-  100% { background-position: 150% 0; }
-`;
-
-const PremiumName = styled.span`
-  font-weight: 800;
-  letter-spacing: 0.5px;
-
-  background: linear-gradient(
-    110deg,
-    #ffffff 0%,
-    #ffffff 45%,
-    #ff1e1e 50%,
-    #ffffff 55%,
-    #ffffff 100%
-  );
-
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-
-  animation:
-    ${fadeSlide} 0.8s ease forwards,
-    ${subtleShine} 4s linear infinite;
-
-  text-shadow: 0 0 12px rgba(255, 30, 30, 0.25);
-`;
-
 export default function App() {
   useEffect(() => {
     const style = document.createElement("style");
@@ -86,6 +46,23 @@ export default function App() {
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg,#3b82f6,#22c55e);
 }
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes toastSlide {
+  from {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 `;
     document.head.appendChild(style);
     return () => document.head.removeChild(style);
@@ -375,6 +352,8 @@ export default function App() {
     const [aboutRef, aboutVisible] = useInView(0.5);
 
     const [aboutTriggered, setAboutTriggered] = useState(false);
+    const [glassPos, setGlassPos] = useState({ x: 50, y: 50 });
+    const [tilt, setTilt] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
       if (sectionId === 1 && !aboutTriggered) {
@@ -403,6 +382,31 @@ export default function App() {
       window.addEventListener("scroll", handleScroll, { passive: true });
       return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    const handleGlassMove = (e) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+      setGlassPos({ x, y });
+    };
+
+    const handleTiltMove = (e) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+
+      const px = (e.clientX - rect.left) / rect.width;
+      const py = (e.clientY - rect.top) / rect.height;
+
+      const tiltX = (py - 0.5) * 8;
+      const tiltY = (px - 0.5) * -8;
+
+      setTilt({ x: tiltX, y: tiltY });
+    };
+
+    const resetTilt = () => {
+      setTilt({ x: 0, y: 0 });
+    };
 
     return (
       <>
@@ -1307,42 +1311,38 @@ export default function App() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              position: "relative",
               width: "100%",
+              position: "relative",
             }}
           >
             <div
               style={{
                 width: "100%",
-                maxWidth: "1600px",
+                maxWidth: "1700px",
                 margin: "0 auto",
-                padding: isMobile ? "0 1.5rem" : "0 4rem",
+                padding: isMobile ? "0 1.5rem" : "0 5rem",
                 display: "grid",
-                gridTemplateColumns: isMobile ? "1fr" : "1.3fr 1fr",
-                gap: isMobile ? "3rem" : "6rem",
+                gridTemplateColumns: isMobile ? "1fr" : "1.35fr 1fr",
+                gap: isMobile ? "3rem" : "7rem",
                 alignItems: "center",
               }}
             >
               {/* LEFT SIDE */}
-              <div style={{ width: "100%" }}>
+              <div>
                 <Reveal delay={0}>
-                  <h2
-                    style={{
-                      ...sectionTitle(isMobile),
-                      textAlign: "left",
-                      marginBottom: "2rem",
-                    }}
-                  >
+                  <h2 style={{ ...sectionTitle(isMobile), textAlign: "left" }}>
                     Let’s Engineer Your Next Scalable End-to-End website.
                   </h2>
                 </Reveal>
+
                 <Reveal delay={120}>
                   <p
                     style={{
                       opacity: 0.75,
                       fontSize: "1.25rem",
                       lineHeight: 1.8,
-                      maxWidth: isMobile ? "100%" : "680px",
+                      maxWidth: isMobile ? "100%" : "720px",
+                      marginTop: "1.8rem",
                     }}
                   >
                     I'm open to backend engineering roles where I can design
@@ -1352,15 +1352,13 @@ export default function App() {
                 </Reveal>
               </div>
               {/* RIGHT SIDE */}
-              <div style={{ width: "100%", maxWidth: "620px" }}>
-                {/* SHINY CTA */}
+              <div style={{ width: "100%", maxWidth: "680px" }}>
                 <Reveal delay={180}>
                   <p
                     style={{
-                      marginBottom: "1.4rem",
+                      marginBottom: "1.5rem",
                       fontSize: "1.1rem",
                       opacity: 0.9,
-                      textAlign: isMobile ? "center" : "left",
                     }}
                   >
                     <ShinySpan>
@@ -1370,85 +1368,50 @@ export default function App() {
                   </p>
                 </Reveal>
 
-                {/* CONTACT FORM */}
+                {/* GLASS CONTACT CARD */}
                 <Reveal delay={250}>
-                  <form
-                    onSubmit={(e) => {
-                      e.preventDefault();
-
-                      const form = e.target;
-                      const name = form.name.value;
-                      const email = form.email.value;
-                      const message = form.message.value;
-
-                      const mailto = `mailto:yasiffkhan@gmail.com?subject=Portfolio Contact from ${name}&body=${encodeURIComponent(
-                        message + "\n\nFrom: " + name + " (" + email + ")",
-                      )}`;
-
-                      window.location.href = mailto;
-                    }}
+                  <div
                     style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "1.1rem",
-                      padding: "2.3rem",
-                      borderRadius: "24px",
-                      background: "rgba(255,255,255,0.05)",
-                      border: "1px solid rgba(255,255,255,0.08)",
-                      backdropFilter: "blur(14px)",
-                      boxShadow: "0 30px 70px rgba(0,0,0,0.55)",
+                      position: "absolute",
+                      inset: 0,
+                      pointerEvents: "none",
+
+                      background: `radial-gradient(
+      circle at ${glassPos.x}% ${glassPos.y}%,
+      rgba(255,255,255,0.12),
+      transparent 40%
+    )`,
+
+                      transition: "background 0.1s ease",
+                    }}
+                  />
+                  <div
+                    onMouseMove={(e) => {
+                      handleTiltMove(e);
+                      handleGlassMove(e); // keeps reflection working
+                    }}
+                    onMouseLeave={resetTilt}
+                    style={{
+                      position: "relative",
+                      borderRadius: "28px",
+                      padding: "3rem",
+                      overflow: "hidden",
+
+                      transform: `perspective(900px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+                      transition: "transform 0.15s ease",
+
+                      background: "rgba(2,6,23,0.88)",
+                      backdropFilter: "blur(40px) saturate(180%)",
+                      WebkitBackdropFilter: "blur(40px)",
+
+                      border: "1px solid rgba(255,255,255,0.12)",
+
+                      boxShadow:
+                        "0 60px 120px rgba(0,0,0,0.75), inset 0 0 25px rgba(34,197,94,0.08)",
                     }}
                   >
-                    <input
-                      name="name"
-                      placeholder="Your Name"
-                      required
-                      style={{
-                        padding: "1rem 1.1rem",
-                        borderRadius: "14px",
-                        border: "1px solid rgba(255,255,255,0.12)",
-                        background: "rgba(0,0,0,0.45)",
-                        color: "white",
-                        fontSize: "1rem",
-                        outline: "none",
-                      }}
-                    />
-
-                    <input
-                      name="email"
-                      type="email"
-                      placeholder="Your Email"
-                      required
-                      style={{
-                        padding: "1rem 1.1rem",
-                        borderRadius: "14px",
-                        border: "1px solid rgba(255,255,255,0.12)",
-                        background: "rgba(0,0,0,0.45)",
-                        color: "white",
-                        fontSize: "1rem",
-                        outline: "none",
-                      }}
-                    />
-
-                    <textarea
-                      name="message"
-                      placeholder="Your Message"
-                      rows="5"
-                      required
-                      style={{
-                        padding: "1rem 1.1rem",
-                        borderRadius: "14px",
-                        border: "1px solid rgba(255,255,255,0.12)",
-                        background: "rgba(0,0,0,0.45)",
-                        color: "white",
-                        fontSize: "1rem",
-                        resize: "vertical",
-                        outline: "none",
-                      }}
-                    />
-
-                    <Button3 type="submit">Send Message</Button3>
-                  </form>
+                    <ContactForm />
+                  </div>
                 </Reveal>
               </div>
             </div>

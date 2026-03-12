@@ -90,3 +90,32 @@ export const secondaryBtn = {
   cursor: "pointer",
   transition: "transform 0.25s ease, box-shadow 0.25s ease",
 };
+
+export const floatingWrapper = {
+  position: "relative",
+  width: "100%",
+  marginBottom: "1.5rem",
+};
+
+export const floatingInput = {
+  width: "100%",
+  padding: "1.2rem 1rem",
+  borderRadius: "14px",
+  border: "1px solid rgba(255,255,255,0.18)",
+  background: "rgba(0,0,0,0.5)",
+  color: "white",
+  fontSize: "1rem",
+  outline: "none",
+  transition: "all .25s ease",
+};
+
+export const floatingLabel = {
+  position: "absolute",
+  left: "1rem",
+  top: "50%",
+  transform: "translateY(-50%)",
+  fontSize: "0.9rem",
+  opacity: 0.6,
+  pointerEvents: "none",
+  transition: "all .25s ease",
+};
