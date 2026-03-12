@@ -95,7 +95,7 @@ const ServicesSection = memo(function ServicesSection({
           </Reveal>
 
           <Reveal delay={120}>
-            <p style={{ ...paragraphStyle, maxWidth: "680px" }}>
+            <p style={{ ...paragraphStyle, maxWidth: "680px", color: "rgba(255,255,255,0.78)" }}>
               I build high-impact backend systems and premium 3D portfolio like
               this one and any kind of websites you want. If you want a modern,
               conversion-focused presence with a high-performance delivery, I
@@ -108,7 +108,7 @@ const ServicesSection = memo(function ServicesSection({
               <div key={i} className="svc-card">
                 <div className="svc-card__glow" />
                 <h3 style={{ margin: 0, marginBottom: "0.6rem" }}>{s.title}</h3>
-                <p style={{ margin: 0, opacity: 0.75, lineHeight: 1.6 }}>
+                <p style={{ margin: 0, color: "rgba(255,255,255,0.78)", lineHeight: 1.6 }}>
                   {s.desc}
                 </p>
               </div>
@@ -144,7 +144,7 @@ const ServicesSection = memo(function ServicesSection({
                   "Delivery: deploy + handover",
                 ].map((x, i) => (
                   <div key={i} style={{ display: "flex", gap: "0.6rem" }}>
-                    <span style={{ color: "#ffffff", opacity: 0.9 }}>✔</span>
+                    <span style={{  color: "rgba(255,255,255,0.78)" }}>✔</span>
                     <span>{x}</span>
                   </div>
                 ))}
@@ -165,7 +165,7 @@ const ServicesSection = memo(function ServicesSection({
                 </Button3>
               </div>
 
-              <p style={{ marginTop: "1.4rem", opacity: 0.6, lineHeight: 1.6 }}>
+              <p style={{ marginTop: "1.4rem", color: "rgba(255,255,255,0.78)", lineHeight: 1.6 }}>
                 For best outcomes, share your reference site + target sections +
                 hosting preference.
               </p>

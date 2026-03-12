@@ -54,9 +54,9 @@ const StyledWrapper = styled.div`
     line-height: 1rem;
 
     background: "linear-gradient(135deg, #16a34a, #15803d)";
-    box-shadow:
+    ${'' /* box-shadow:
       inset 0 1px 0 0 rgba(255, 255, 255, 0.04),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+      inset 0 0 0 1px rgba(255, 255, 255, 0.04); */}
     color: #fff;
   }
 
