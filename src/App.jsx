@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { useEffect, Suspense, useRef, useState, lazy } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import Button1 from "./Projects buttons/Button1";
 import Button2 from "./Projects buttons/Button2";
 import Button3 from "./Projects buttons/Button3";
@@ -337,6 +338,7 @@ export default function App() {
           </div>
         )}
       </div>
+      <SpeedInsights />
     </>
   );
 
