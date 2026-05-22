@@ -5,7 +5,7 @@ const Resume = () => {
   return (
     <StyledWrapper>
       <a
-        href="/Curriculum Vitae.pdf"
+        href="/CV.pdf"
         download
         target="_blank"
         rel="noopener noreferrer"
